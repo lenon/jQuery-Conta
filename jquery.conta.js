@@ -1,31 +1,42 @@
 /*!
- * jQuery Conta Plugin v1
- * http://lenonmarcel.com.br/
+ * jQuery Conta Plugin 1.2
+ * http://lenonmarcel.com.br/code/jquery-conta
  *
  * Copyright 2009, 2010 Lenon Marcel
- * Dual licensed under the MIT and GPL licenses.
+ * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
  *
- * Date: 2010-04-30 (Fri, 30 April 2010)
+ * Date: 07-12-2010 (July 12, 2010)
  */
+
 (function($){
-  $.fn.conta = function(counter, len){
-    
-    var input   = $(this),
-        counter = $(counter);
-    
-    input.keyup(function(){
-      var count = (len ? len : 140) - input.val().length;
-      
-      if (count < 0)
-        counter.attr('class','over');
-      else
-        counter.attr('class','safe');
-      
-      counter.text(count);
-    }).keyup();
-    
-    return this;
-  }
-})(jQuery)
+
+    $.fn.conta = function( counter, len )
+    {
+        if (!len) len = 140; // Twitter limit :)
+
+        var input   = $(this),
+            counter = $(counter),
+            els     = [input, counter];
+
+        input.keyup( function() {
+
+            var count = len - input.val().length;
+
+            for ( var i = 0; i < 2; i++ )
+            {
+                if (count < 0) {
+                    els[i].removeClass('safe').addClass('over');
+                } else {
+                    els[i].removeClass('over').addClass('safe');
+                }
+            }
+
+            counter.text(count);
+
+        }).keyup();
+
+        return this;
+    }
+
+})(jQuery);

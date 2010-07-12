@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CooQuery - Cookies with JavaScript</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.conta.min.js"></script>
+    <script type="text/javascript">
+
+    jQuery(function($){
+
+        $('#input1').conta('#counter1');
+
+        $('#input2').conta('#counter2', 300);
+
+    });
+
+    </script>
+    <style>
+
+    .over {
+        color: red;
+    }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <h1>jQuery Conta - Test</h1>
+    <p>
+        <input id="input1" type="text" />
+        <span id="counter1"></span>
+    </p>
+    <p>
+        <textarea id="input2"></textarea>
+        <span id="counter2"></span>
+    </p>
+</div>
+</body>
+</html>
